@@ -12,8 +12,11 @@
     <div class="welcome">
         <p> Welcome Colin, </p>
     </div>
-    <div class="welcome" id="nineteen">
+    <div class="welcome">
         <p> Happy 19th Birthday!</p>
+    </div>
+    <div class="startButton">
+        <button type="button"> Begin </button>
     </div>
   </div>
   <div class="flowers">
@@ -355,6 +358,22 @@ body {
     font-size: 45px; 
     color: white; 
     margin-top: 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.welcome.visible {
+        opacity: 1;
+        transform: translateY(0);
+}
+
+.startButton {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 
