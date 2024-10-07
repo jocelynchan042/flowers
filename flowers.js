@@ -15,3 +15,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }, 500);
 });
 
+//Start button fade in 
+window.addEventListener('load', function() {
+  setTimeout(() => {
+      const elements = document.querySelectorAll('.startButton');
+      elements.forEach(element => {
+          element.classList.add('visible');
+      });
+  }, 5000); // Delay of 500ms
+});
