@@ -42,6 +42,10 @@ body {
   color: white;
   align-items: center;
   margin-top: 25px;
+
+  opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .start h1 {
@@ -50,6 +54,11 @@ body {
 
 .start p {
     font-size: 15px;
+}
+
+.start.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .button img{
