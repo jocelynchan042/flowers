@@ -52,26 +52,112 @@ body {
     font-size: 40px;
 }
 
-.start p {
-    font-size: 15px;
-}
-
 .start.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.button img{
+.button img.visible {
+  opacity: 1;
+}
+
+.button img {
     margin-top: 5px;
     filter: drop-shadow(0 0 10px rgba(231, 231, 149, 0.83))
             drop-shadow(0 0 20px rgba(77, 122, 111, 0.83));
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition: filter .2s ease, transform .2s ease, opacity 4s ease-out, transform 2s ease-out;
+    opacity: 0;
+    animation: pulse 2s ease-out infinite;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
 }
 
 .button img:hover {
     cursor: pointer;
+    animation: spin 5s linear infinite;
 }
 
 .not-loaded * {
     animation-play-state: paused !important;
   }
+
+  .line-animation-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.line-animation-container.show {
+    opacity: 1;
+}
+
+.dropping-line {
+    width: 2px;
+    background-color: #ffffff;
+    transform-origin: top center;
+    height: 0;
+}
+
+.dropping-line.animate {
+    animation: dropLine 2s ease forwards;
+}
+
+.animated-star {
+    position: absolute;
+    bottom: 80px;
+    opacity: 0;
+}
+
+.animated-star.animate {
+    animation: showStar 1s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes dropLine {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 200px;
+    }
+}
+
+@keyframes showStar {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+  @keyframes pulse {
+    0% {
+        filter: drop-shadow(0 0 10px rgba(231, 231, 149, 0.83))
+                drop-shadow(0 0 20px rgba(77, 122, 111, 0.83));
+    }
+    50% {
+        filter: drop-shadow(0 0 20px rgba(231, 231, 149, 0.83))
+                drop-shadow(0 0 40px rgba(77, 122, 111, 0.83));
+        transform: scale(1.2);
+    }
+    100% {
+        filter: drop-shadow(0 0 10px rgba(231, 231, 149, 0.83))
+                drop-shadow(0 0 20px rgba(77, 122, 111, 0.83));
+    }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
